@@ -1,0 +1,242 @@
+[
+  {
+    "portfolioId": 101,
+    "userId": "123e4567-e89b-12d3-a456-426614174000",
+    "portfolioName": "Main Portfolio",
+    "portfolioType": "Equity",
+    "holdings": [
+      {
+        "holdingId": "HDFCBANK",
+        "type": "stock",
+        "particulars": "HDFC Bank",
+        "purchasePrice": 1490,
+        "purchaseQty": 50,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "BAJFINANCE",
+        "type": "stock",
+        "particulars": "Bajaj Finance",
+        "purchasePrice": 6466,
+        "purchaseQty": 15,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "532174",
+        "type": "stock",
+        "particulars": "ICICI Bank",
+        "purchasePrice": 780,
+        "purchaseQty": 84,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "544252",
+        "type": "stock",
+        "particulars": "Bajaj Housing",
+        "purchasePrice": 130,
+        "purchaseQty": 504,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "511577",
+        "type": "stock",
+        "particulars": "Savani Financials",
+        "purchasePrice": 24,
+        "purchaseQty": 1080,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "AFFLE",
+        "type": "stock",
+        "particulars": "Affle India",
+        "purchasePrice": 1151,
+        "purchaseQty": 50,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "LTIM",
+        "type": "stock",
+        "particulars": "LTI Mindtree",
+        "purchasePrice": 4775,
+        "purchaseQty": 16,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "542651",
+        "type": "stock",
+        "particulars": "KPIT Tech",
+        "purchasePrice": 672,
+        "purchaseQty": 61,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "544028",
+        "type": "stock",
+        "particulars": "Tata Tech",
+        "purchasePrice": 1072,
+        "purchaseQty": 63,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "544107",
+        "type": "stock",
+        "particulars": "BLS E-Services",
+        "purchasePrice": 232,
+        "purchaseQty": 191,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "532790",
+        "type": "stock",
+        "particulars": "Tanla",
+        "purchasePrice": 1134,
+        "purchaseQty": 45,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "DMART",
+        "type": "stock",
+        "particulars": "Dmart",
+        "purchasePrice": 3777,
+        "purchaseQty": 27,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "532540",
+        "type": "stock",
+        "particulars": "Tata Consumer",
+        "purchasePrice": 845,
+        "purchaseQty": 90,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "500331",
+        "type": "stock",
+        "particulars": "Pidilite",
+        "purchasePrice": 2376,
+        "purchaseQty": 36,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "500400",
+        "type": "stock",
+        "particulars": "Tata Power",
+        "purchasePrice": 224,
+        "purchaseQty": 225,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "542323",
+        "type": "stock",
+        "particulars": "KPI Green",
+        "purchasePrice": 875,
+        "purchaseQty": 50,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "532667",
+        "type": "stock",
+        "particulars": "Suzlon",
+        "purchasePrice": 44,
+        "purchaseQty": 450,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "542851",
+        "type": "stock",
+        "particulars": "Gensol",
+        "purchasePrice": 998,
+        "purchaseQty": 45,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "543517",
+        "type": "stock",
+        "particulars": "Hariom Pipes",
+        "purchasePrice": 580,
+        "purchaseQty": 60,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "ASTRAL",
+        "type": "stock",
+        "particulars": "Astral",
+        "purchasePrice": 1517,
+        "purchaseQty": 56,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "542652",
+        "type": "stock",
+        "particulars": "Polycab",
+        "purchasePrice": 2818,
+        "purchaseQty": 28,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "543318",
+        "type": "stock",
+        "particulars": "Clean Science",
+        "purchasePrice": 1610,
+        "purchaseQty": 32,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "506401",
+        "type": "stock",
+        "particulars": "Deepak Nitrite",
+        "purchasePrice": 2248,
+        "purchaseQty": 27,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "541557",
+        "type": "stock",
+        "particulars": "Fine Organic",
+        "purchasePrice": 4284,
+        "purchaseQty": 16,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "533282",
+        "type": "stock",
+        "particulars": "Gravita",
+        "purchasePrice": 2037,
+        "purchaseQty": 8,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "540719",
+        "type": "stock",
+        "particulars": "SBI Life",
+        "purchasePrice": 1197,
+        "purchaseQty": 49,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "500209",
+        "type": "stock",
+        "particulars": "Infy",
+        "purchasePrice": 1647,
+        "purchaseQty": 36,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "543237",
+        "type": "stock",
+        "particulars": "Happiest Mind",
+        "purchasePrice": 1103,
+        "purchaseQty": 45,
+        "purchaseDate": null
+      },
+      {
+        "holdingId": "543272",
+        "type": "stock",
+        "particulars": "Easemytrip",
+        "purchasePrice": 20,
+        "purchaseQty": 1332,
+        "purchaseDate": null
+      }
+    ]
+  }
+]
