@@ -25,10 +25,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
         }
 
         asset.marketData.cmp = quoteData.regularMarketPrice;
-        console.log(
-          `[${new Date().toISOString()}] Updated CMP for ${asset.ticker}: ${quoteData.regularMarketPrice}`
-        );
-
+        
       } catch (err) {
         console.error(`Error fetching data for ${asset.ticker}`, err);
       }

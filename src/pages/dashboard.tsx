@@ -73,7 +73,6 @@ export default function Dashboard() {
     });
   }, [portfolio]);
 
-  // ✅ Now we can conditionally return safely
   if (portfolios.length === 0)
     return (
       <div className="flex justify-center items-center h-screen">
@@ -103,7 +102,6 @@ export default function Dashboard() {
 
   return (
     <div>
-      {/* ✅ reusable component */}
       <PortfolioCard portfolio={{ ...portfolio, sectors }} />
     </div>
   );

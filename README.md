@@ -1,40 +1,151 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 📈 Portfolio Dashboard (8byte.ai Assignment)
 
-## Getting Started
+A fully responsive, visually insightful, and extensible portfolio dashboard built using **Next.js**, **TypeScript**, and **Tailwind CSS**, with real-time financial data integration and thoughtful UX features.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+- ✅ Real-time data fetch (Yahoo CMP, Google Sheet PE/Earnings)
+- ✅ Grouped by sector with expandable/collapsible rows
+- ✅ Sector-level aggregations (Investment, Portfolio %, Gain/Loss)
+- ✅ Dynamic column rendering (type-based)
+- ✅ Circular ring for Portfolio % (with external label)
+- ✅ Gain/Loss with arrow + number + percentage
+- ✅ Searchable, sortable, memoized for performance
+- ✅ Responsive & scrollable (both X and Y)
+- ✅ Fully generalized and scalable data model
+
+---
+
+## 🔧 Tech Stack
+
+- **Frontend**: Next.js 14, React, TypeScript, TailwindCSS
+- **Charting**: Recharts, @nivo/bar
+- **Table**: @tanstack/react-table
+- **API Fetch**: Axios, native fetch
+
+---
+
+## 📁 Folder Structure
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+src/
+  ├── components/       # UI components
+  ├── data/             # JSON files for assets, portfolios, etc.
+  ├── pages/api/        # Yahoo & Google fetch endpoints
+  ├── types/            # TS types/interfaces
+  └── utils/            # Chart transformations & enrichers
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
+## 🔄 Data Flow
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
+```mermaid
+graph TD;
+    User -->|View| Dashboard;
+    
+    Dashboard -->|useEffect: fetch| Yahoo API;
+    Dashboard -->|useEffect: fetch| Google Sheets;
+    Yahoo API -->|Update| assets.json;
+    Google Sheets -->|Update PE/EPS| assets.json;
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+    assets.json -->|Join| portfolios.json;
+    portfolios.json -->|Enrich| holdings;
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+    Dashboard -->|useMemo: derive sectors| SectorSummary;
+    SectorSummary -->|Pass props| PortfolioCard;
 
-## Learn More
+    PortfolioCard -->|Display| PortfolioSummary;
+    PortfolioCard --> PortfolioSunburst;
+    PortfolioCard --> PortfolioTable;
+    PortfolioCard --> PortfolioGainLossBar; 
 
-To learn more about Next.js, take a look at the following resources:
+    PortfolioTable -->|Show holdings| TableUI;
+    PortfolioSunburst -->|Show sector split| SunburstChart;
+    PortfolioGainLossBar -->|Show gain/loss| BarChart;
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## ⚙️ Local Setup
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+# Clone the repo
+git clone https://github.com/kiranruba/Dynamic-Portfolio-Dashboard.git
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+# Go inside project folder
+cd Dynamic-Portfolio-Dashboard
+
+# Install dependencies
+npm install
+
+# Run dev server
+npm run dev
+
+```
+
+---
+
+## 🌐 API Endpoints
+
+- `/api/yahoo`: Updates CMP using Yahoo Finance
+- `/api/google`: Updates PE & EPS from Google Sheets (CSV)
+- `/api/refresh`: Calls both in parallel and enriches data
+
+---
+
+## 📊 Sample Dashboard Output
+
+- 💰 **Portfolio Value**: ₹1.8L present vs ₹1.67L invested  
+- 📈 **Top Gainer**: `ICICI Bank` (+85.08%)  
+- 📉 **Top Loser**: `Gensol` (−95.6%)  
+- 🏢 **Sector Dominance**: `Financials` & `Tech` (~40%)  
+- 📊 **Performance**: `13 of 29 stocks` in profit, contributing **24.9%**
+
+
+---
+
+## 🛆 Mock Data Files
+
+- `assets.json`: Shared stock master data with CMP, PE, Earnings
+- `portfolios.json`: Portfolio structure linked to assets
+- `users.json`: Mock user structure
+
+---
+
+## 🖐️ Design Highlights
+
+- Clean UI with collapsible sectors
+- Icons for sorting and expanding
+- Small indicators, no empty-cell dashes
+- Circular Portfolio % charts (outer label only)
+- Sticky left column for particulars (planned)
+
+---
+
+## 📘 Assignment Scope
+
+- Only `type = stock` assets used
+- Designed for easy future extension: Bonds, FDs, etc.
+- SQL schema proposed for backend implementation
+
+---
+
+## 🧠 Architectural Thinking
+
+- Shared `assets.json` → avoids duplication
+- React hooks and `useMemo` for performance
+- Separation of concerns between data, views, and config
+- Visuals and KPIs carefully selected from available data
+
+---
+
+## 🛅 Feedback / Contributions
+
+This project demonstrates full-stack integration, performance optimizations, and real-world business reasoning — built with interview readiness in mind.
+
+Raise issues or suggestions via GitHub or connect directly for discussion!
+
