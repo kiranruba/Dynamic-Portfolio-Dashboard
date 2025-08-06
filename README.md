@@ -46,25 +46,26 @@ src/
 graph TD;
     User -->|View| Dashboard;
     
-    Dashboard -->|useEffect: fetch| Yahoo API;
-    Dashboard -->|useEffect: fetch| Google Sheets;
-    Yahoo API -->|Update| assets.json;
-    Google Sheets -->|Update PE/EPS| assets.json;
+    Dashboard -->|"useEffect: fetch" | Yahoo_API;
+    Dashboard -->|"useEffect: fetch" | Google_Sheets;
+    Yahoo_API -->|"Update" | assets_json;
+    Google_Sheets -->|"Update PE/EPS" | assets_json;
 
-    assets.json -->|Join| portfolios.json;
-    portfolios.json -->|Enrich| holdings;
+    assets_json -->|"Join" | portfolios_json;
+    portfolios_json -->|"Enrich" | holdings;
 
-    Dashboard -->|useMemo: derive sectors| SectorSummary;
-    SectorSummary -->|Pass props| PortfolioCard;
+    Dashboard -->|"useMemo: derive sectors" | SectorSummary;
+    SectorSummary -->|"Pass props" | PortfolioCard;
 
-    PortfolioCard -->|Display| PortfolioSummary;
+    PortfolioCard -->|"Display" | PortfolioSummary;
     PortfolioCard --> PortfolioSunburst;
     PortfolioCard --> PortfolioTable;
     PortfolioCard --> PortfolioGainLossBar; 
 
-    PortfolioTable -->|Show holdings| TableUI;
-    PortfolioSunburst -->|Show sector split| SunburstChart;
-    PortfolioGainLossBar -->|Show gain/loss| BarChart;
+    PortfolioTable -->|"Show holdings" | TableUI;
+    PortfolioSunburst -->|"Show sector split" | SunburstChart;
+    PortfolioGainLossBar -->|"Show gain/loss" | BarChart;
+
 
 ```
 
