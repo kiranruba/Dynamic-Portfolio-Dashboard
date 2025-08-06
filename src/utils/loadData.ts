@@ -3,6 +3,15 @@ import assetsRaw from "@/data/assets.json";
 import usersRaw from "@/data/users.json";
 import { Portfolio, Holding } from "@/types/portfolio";
 
+// ✅ New interface
+interface SectorSummary {
+  sector: string;
+  totalInvestment: number;
+  totalPresentValue: number;
+  totalGainLoss: number;
+  sectorPercent: number;
+}
+
 // Cast JSON to expected types
 const portfolios = portfoliosRaw as Portfolio[];
 const assets = assetsRaw as {
@@ -17,6 +26,7 @@ const assets = assetsRaw as {
   };
 }[];
 const users = usersRaw;
+
 export interface EnrichedHolding extends Holding {
   sector: string;
   investment: number;
@@ -25,11 +35,12 @@ export interface EnrichedHolding extends Holding {
   gainLossPercent: number;
   portfolioPercent: number;
 }
+
 export const getUsers = () => users;
 export const getPortfolios = (): Portfolio[] => portfolios;
 export const getAssets = () => assets;
 
-export const getEnrichedPortfolioData = (): (Portfolio & { sectors: any[] })[] => {
+export const getEnrichedPortfolioData = (): (Portfolio & { sectors: SectorSummary[] })[] => {
   return portfolios.map((portfolio) => {
     let totalInvestment = 0;
     let totalPresentValue = 0;
@@ -68,15 +79,13 @@ export const getEnrichedPortfolioData = (): (Portfolio & { sectors: any[] })[] =
 
     const totalGainLoss = totalPresentValue - totalInvestment;
 
-    // Add portfolio percentage for each holding
     const holdingsWithPercent: EnrichedHolding[] = enrichedHoldings.map((h) => ({
       ...h,
       portfolioPercent:
         totalInvestment !== 0 ? (h.investment / totalInvestment) * 100 : 0,
     }));
 
-      // ✅ Sector Aggregation
-    const sectorSummary: Record<string, any> = {};
+    const sectorSummary: Record<string, Omit<SectorSummary, "sectorPercent">> = {};
     holdingsWithPercent.forEach((h) => {
       if (!sectorSummary[h.sector]) {
         sectorSummary[h.sector] = {
@@ -91,7 +100,7 @@ export const getEnrichedPortfolioData = (): (Portfolio & { sectors: any[] })[] =
       sectorSummary[h.sector].totalGainLoss += h.gainLoss;
     });
 
-    const sectors = Object.values(sectorSummary).map((s: any) => ({
+    const sectors: SectorSummary[] = Object.values(sectorSummary).map((s) => ({
       ...s,
       sectorPercent:
         totalInvestment !== 0
@@ -99,14 +108,13 @@ export const getEnrichedPortfolioData = (): (Portfolio & { sectors: any[] })[] =
           : 0,
     }));
 
-
     return {
       ...portfolio,
       holdings: holdingsWithPercent,
       totalInvestment,
       totalPresentValue,
       totalGainLoss,
-      sectors, 
+      sectors,
     };
   });
 };

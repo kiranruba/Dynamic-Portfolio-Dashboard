@@ -1,26 +1,20 @@
 "use client";
 
-import { getEnrichedPortfolioData } from "@/utils/loadData";
 import { useEffect, useState, useMemo } from "react";
+import { getEnrichedPortfolioData } from "@/utils/loadData";
 import { Portfolio } from "@/types/portfolio";
 import PortfolioCard from "@/components/PortfolioCard";
 
 export default function Dashboard() {
   const [portfolios, setPortfolios] = useState<Portfolio[]>([]);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
-  const [loading, setLoading] = useState(false);
 
   const refreshData = async () => {
     try {
-      setLoading(true);
       await Promise.all([fetch("/api/yahoo"), fetch("/api/google")]);
       const data = getEnrichedPortfolioData();
       setPortfolios(data);
-      setLastUpdated(new Date());
     } catch (err) {
       console.error("Error refreshing data:", err);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -73,7 +67,7 @@ export default function Dashboard() {
     });
   }, [portfolio]);
 
-  if (portfolios.length === 0)
+  if (!portfolio) {
     return (
       <div className="flex justify-center items-center h-screen">
         <svg
@@ -99,6 +93,7 @@ export default function Dashboard() {
         <span className="ml-3 text-gray-700 text-lg">Loading...</span>
       </div>
     );
+  }
 
   return (
     <div>

@@ -5,17 +5,11 @@ import { EnrichedPortfolio } from "@/types/portfolio";
 import PortfolioSummary from "@/components/PortfolioSummary";
 import PortfolioTable from "@/components/PortfolioTable";
 import PortfolioSunburst from "@/components/PortfolioSunburst";
-import { buildSunburstData, getTopGainersAndLosers } from "@/utils/chartUtils";
+import { buildSunburstData } from "@/utils/chartUtils";
 import PortfolioGainLossBar from "@/components/PortfolioGainLossBar";
 
 export default function PortfolioCard({ portfolio }: { portfolio: EnrichedPortfolio }) {
-  // ✅ Top 3 gainers + losers by stock
-  const topHoldings = getTopGainersAndLosers(
-    portfolio.holdings,
-    (h) => h.gainLossPercent ?? 0,
-    (h) => h.particulars
-  );
-
+ 
   // ✅ expand/collapse sector state
 const [expandedSectors, setExpandedSectors] = useState<Record<string, boolean>>({});
 const [hasInitialized, setHasInitialized] = useState(false);
