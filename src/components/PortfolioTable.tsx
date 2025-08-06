@@ -118,8 +118,8 @@ const isAllExpanded = useMemo(() => {
   return (
     <div className="w-full overflow-x-auto">
       <div className="flex items-center justify-between mb-4">
-        <input
-          className="border p-1 rounded w-full max-w-sm"
+       <input
+          className="border border-gray-300 dark:border-gray-600 bg-gray-100 dark:bg-gray-800 text-gray-800 dark:text-gray-300 p-1 rounded w-full max-w-sm transition-colors"
           placeholder="Search stocks..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
@@ -127,7 +127,7 @@ const isAllExpanded = useMemo(() => {
       
 
 <button
-  className="ml-4 text-blue-600 hover:underline"
+className="ml-4 text-blue-600 dark:text-blue-400 hover:underline"
   onClick={() => {
     const newState: Record<string, boolean> = {};
     Object.keys(grouped).forEach((sector) => {
@@ -142,8 +142,8 @@ const isAllExpanded = useMemo(() => {
 
       </div>
 
-<table className="min-w-full border border-gray-300 rounded-xl overflow-hidden">
-        <thead className="bg-blue-100">
+<table className="min-w-full border border-gray-300 dark:border-gray-700 rounded-xl overflow-hidden transition-colors">
+<thead className="bg-blue-100 dark:bg-blue-900 text-gray-800 dark:text-gray-300 transition-colors">
           <tr>
             {columns.map((col) => (
               <th
@@ -172,8 +172,7 @@ const isAllExpanded = useMemo(() => {
             const summary = getSectorSummary(rows);
             return (
               <React.Fragment key={sector}>
-                <tr
-                  className="bg-gray-100 font-semibold text-black cursor-pointer hover:bg-gray-200"
+            <tr className="bg-gray-100 dark:bg-gray-800 font-semibold text-gray-800 dark:text-gray-100 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
                   onClick={() => toggleSector(sector)}
                 >
                   {columns.map((col, idx) => {
@@ -195,7 +194,11 @@ const isAllExpanded = useMemo(() => {
                       const isGain = summary.gainLoss >= 0;
                       content = (
                         <div
-                          className={`flex items-center text-sm font-semibold rounded px-2 py-1 ${isGain ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"}`}
+                          className={`flex items-center text-sm font-semibold rounded px-2 py-1 ${isGain 
+                                      ? "bg-green-100 dark:bg-green-900 text-green-600  dark:text-green-100" 
+                                      : "bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-100"
+                                    }
+                                    `}
                         >
                           <span className="mr-1">{isGain ? "▲" : "▼"}</span>
                           <span>{summary.gainLoss.toFixed(2)}</span>
@@ -223,9 +226,9 @@ const isAllExpanded = useMemo(() => {
                   })}
                 </tr>
 
-                {expandedSectors[sector] &&
-                  rows.map((h) => (
-                    <tr key={h.holdingId} className="hover:bg-gray-50">
+                  {expandedSectors[sector] &&
+                    rows.map((h, rowIndex) => (
+                  <tr key={`${sector}-${h.holdingId ?? rowIndex}`} className="hover:bg-gray-50 dark:hover:bg-gray-700 transition-colors">
                       {columns.map((col) => {
                         const val = h[col.key];
                         let content: React.ReactNode = "";
@@ -237,7 +240,11 @@ const isAllExpanded = useMemo(() => {
                           const isGain = num >= 0;
                           content = (
                             <div
-                              className={`flex items-center text-sm font-semibold rounded px-2 py-1 ${isGain ? "bg-green-100 text-green-600" : "bg-red-100 text-red-600"}`}
+                              className={`flex items-center text-sm font-semibold rounded px-2 py-1 ${isGain 
+                                      ? "bg-green-100 dark:bg-green-900 text-green-600 dark:text-green-100" 
+                                      : "bg-red-100 dark:bg-red-900 text-red-600 dark:text-red-100"
+                                    }
+                                    `}
                             >
                               <span className="mr-1">{isGain ? "▲" : "▼"}</span>
                               <span>{num.toFixed(2)}</span>
@@ -253,13 +260,13 @@ const isAllExpanded = useMemo(() => {
                             </div>
                           );
                         } else if (col.type === "code") {
-                          content = val ? <code className="text-sm text-gray-500">{val}</code> : "";
+                          content = val ? <code className="text-sm text-gray-500 dark:text-gray-400">{val}</code> : "";
                         } else {
                           content = val || "";
                         }
 
                         return (
-                          <td className="p-2 border text-sm" key={col.key as string}>
+                          <td key={col.key} className="p-2 border border-gray-300 dark:border-gray-700 text-sm text-gray-800 dark:text-gray-300 transition-colors">
                             {content}
                           </td>
                         );

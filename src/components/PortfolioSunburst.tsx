@@ -3,6 +3,8 @@
 import { ResponsiveSunburst } from "@nivo/sunburst";
 import { useMemo } from "react";
 import chroma from "chroma-js";
+import { useTheme } from "@/context/ThemeContext"; 
+
 
 interface SunburstNode {
   name: string;
@@ -12,12 +14,19 @@ interface SunburstNode {
 }
 export default function PortfolioSunburst({ data }: { data: SunburstNode }) {
   const sectorCount = data.children?.length ?? 0;
+  const { theme } = useTheme(); // or whatever is returned
 
-  const pastelColors = useMemo(() => {
-    return Array.from({ length: sectorCount }, (_, i) =>
-      chroma.hsl((i * 360) / sectorCount, 0.85, 0.85)
-    );
-  }, [sectorCount]);
+const pastelColors = useMemo(() => {
+  const isDark = theme === "dark";
+  return Array.from({ length: sectorCount }, (_, i) =>
+    chroma.hsl(
+      (i * 360) / sectorCount,
+      isDark ? 0.8 : 0.6,
+      isDark ? 0.35 : 0.85
+    )
+  );
+}, [sectorCount, theme]);
+
 
   const coloredData: SunburstNode = useMemo(() => {
     return {
@@ -51,8 +60,8 @@ export default function PortfolioSunburst({ data }: { data: SunburstNode }) {
   }, [data, pastelColors]);
   return (
     
-<div className="relative bg-white p-3 shadow-md border rounded-xl h-[15.5rem] mb-6">
-  <h2 className="absolute top-2 left-4 bg-white dark:bg-zinc-900 text-lg font-semibold z-10 px-2">
+<div className="relative bg-gray-100 dark:bg-gray-900 p-3 shadow-md border dark:border-gray-700 border rounded-xl h-[15.5rem] mb-6">
+  <h2 className="absolute top-2 left-4 bg-gray-100 dark:bg-zinc-900 text-gray-800 dark:text-gray-300 font-semibold z-10 px-2">
     Portfolio Distribution
   </h2>
 
@@ -71,13 +80,13 @@ export default function PortfolioSunburst({ data }: { data: SunburstNode }) {
       arcLabelsRadiusOffset={0.5}
       arcLabelsSkipRadius={10}
       arcLabel={(d) => String(d.id)}
-      arcLabelsTextColor={{ from: "color", modifiers: [["darker", 3.2]] }}
+      arcLabelsTextColor={theme === "dark" ? "#ddd" : "#333"}
       enableArcLabels
       isInteractive
       animate
       motionConfig="gentle"
       tooltip={({ id, value, percentage }) => (
-        <div className="px-2 py-1 rounded bg-black text-white text-sm">
+        <div className="px-2 py-1 rounded bg-gray-800 text-gray-200 text-sm">
           {id}: ₹{value?.toLocaleString()} ({percentage?.toFixed(1)}%)
         </div>
       )}

@@ -96,7 +96,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div>
+    <div className="bg-gray-50 dark:bg-gray-900">
       <PortfolioCard portfolio={{ ...portfolio, sectors }} />
     </div>
   );

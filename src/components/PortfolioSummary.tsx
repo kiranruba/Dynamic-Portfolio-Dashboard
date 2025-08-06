@@ -35,7 +35,10 @@ export default function PortfolioSummary({ portfolio }: Props) {
   } = useMemo(() => {
     const gainLoss = totalPresentValue - totalInvestment;
     const gainLossPercent = totalInvestment ? (gainLoss / totalInvestment) * 100 : 0;
-    const gainColor = gainLoss >= 0 ? "text-green-600" : "text-red-600";
+    const gainColor =
+      gainLoss >= 0
+        ? "text-green-600 dark:text-green-400"
+        : "text-red-600 dark:text-red-400";
     const ArrowIcon = gainLoss >= 0 ? ArrowUpRight : ArrowDownRight;
 
     const profitable = holdings.filter(h => (h.gainLoss ?? 0) > 0);
@@ -90,9 +93,9 @@ export default function PortfolioSummary({ portfolio }: Props) {
       {/* Summary Cards Row */}
       <div className="flex flex-col sm:flex-row gap-4">
         {/* Absolute Return */}
-        <div className="flex-1 p-3 bg-white shadow-md rounded-xl border flex items-center justify-between">
+        <div className="flex-1 p-3 bg-gray-100 dark:bg-gray-900 shadow-md rounded-xl border dark:border-gray-700 flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-500">Absolute Return</p>
+            <p className="text-sm text-gray-500 dark:text-gray-400">Absolute Return</p>
             <h2 className={`text-xl font-bold ${gainColor}`}>₹{gainLoss.toFixed(2)}</h2>
             <p className={`text-xs ${gainColor}`}>{gainLossPercent.toFixed(2)}%</p>
           </div>
@@ -100,12 +103,12 @@ export default function PortfolioSummary({ portfolio }: Props) {
         </div>
 
         {/* Present vs Invested */}
-        <div className="flex-1 p-3 bg-white shadow-md rounded-xl border flex items-center justify-between">
+        <div className="flex-1 p-3 bg-gray-100 dark:bg-gray-900 shadow-md rounded-xl border dark:border-gray-700 flex items-center justify-between">
           <div>
-            <p className="text-sm text-gray-500 mb-1">Present Value / Invested</p>
-            <h2 className="text-lg font-bold text-gray-800">
+            <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">Present Value / Invested</p>
+            <h2 className="text-lg font-bold text-gray-800 dark:text-gray-300">
               ₹{totalPresentValue.toFixed(2)}{" "}
-              <span className="text-sm text-gray-400 font-medium">
+              <span className="text-sm text-gray-400 dark:text-gray-500 font-medium">
                 / ₹{totalInvestment.toFixed(2)}
               </span>
             </h2>
@@ -115,12 +118,17 @@ export default function PortfolioSummary({ portfolio }: Props) {
 
       {/* Insight: Profit vs Loss Distribution */}
       {holdings.length > 0 && (
-        <div className="p-3 bg-white shadow-md rounded-xl border text-sm text-gray-600">
-          <span className="font-bold text-green-600">{profitable.length}</span> of{" "}
-          <span className="text-gray-800">{holdings.length}</span> stocks in profit,
-          contributing <span className="font-semibold text-green-600">₹{totalGains.toFixed(0)} ({gainPercent.toFixed(1)}%)</span>.{" "}
-          <span className="font-bold text-red-600">{lossMakers.length}</span> are in loss dragging with{" "}
-          <span className="font-semibold text-red-600">₹{Math.abs(totalLosses).toFixed(0)} ({lossPercent.toFixed(1)}%)</span>.
+        <div className="p-3 bg-gray-100 dark:bg-gray-900 shadow-md rounded-xl border dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
+          <span className="font-bold text-green-600 dark:text-green-400">{profitable.length}</span> of{" "}
+          <span className="text-gray-800 dark:text-gray-300">{holdings.length}</span> stocks in profit,
+          contributing{" "}
+          <span className="font-semibold text-green-600 dark:text-green-400">
+            ₹{totalGains.toFixed(0)} ({gainPercent.toFixed(1)}%)
+          </span>.{" "}
+          <span className="font-bold text-red-600 dark:text-red-400">{lossMakers.length}</span> are in loss dragging with{" "}
+          <span className="font-semibold text-red-600 dark:text-red-400">
+            ₹{Math.abs(totalLosses).toFixed(0)} ({lossPercent.toFixed(1)}%)
+          </span>.
         </div>
       )}
 
@@ -128,18 +136,19 @@ export default function PortfolioSummary({ portfolio }: Props) {
       <div className="flex flex-col md:flex-row gap-4">
         {/* Top Contributors */}
         {topContributors.length > 0 && (
-          <div className="flex-1 p-3 bg-white shadow-md rounded-xl border text-sm text-gray-600">
+          <div className="flex-1 p-3 bg-gray-100 dark:bg-gray-900 shadow-md rounded-xl border dark:border-gray-700 text-sm text-gray-700 dark:text-gray-300">
             <div className="flex justify-between items-center">
               <p>
-                💹 Top <span className="font-bold text-green-600">{topContributors.length}</span> stocks contribute{" "}
-                <span className="font-semibold text-green-600">{topContribPercent.toFixed(1)}%</span> of your profit.
+                💹 Top{" "}
+                <span className="font-bold text-green-600 dark:text-green-400">{topContributors.length}</span> stocks contribute{" "}
+                <span className="font-semibold text-green-600 dark:text-green-400">{topContribPercent.toFixed(1)}%</span> of your profit.
               </p>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <Info className="w-4 h-4 text-gray-400" />
+                    <Info className="w-4 h-4 text-gray-400 dark:text-gray-500" />
                   </TooltipTrigger>
-                  <TooltipContent className="text-xs">
+                  <TooltipContent className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border dark:border-gray-700">
                     {topContributors.map((g) => (
                       <div key={g.particulars}>
                         {g.particulars}: ₹{g.gainLoss?.toFixed(2)}
@@ -154,18 +163,19 @@ export default function PortfolioSummary({ portfolio }: Props) {
 
         {/* Top Losers */}
         {topLosers.length > 0 && (
-          <div className="flex-1 p-3 bg-white shadow-md rounded-xl border text-sm text-red-600">
+          <div className="flex-1 p-3 bg-gray-100 dark:bg-gray-900 shadow-md rounded-xl border dark:border-gray-700 text-sm text-red-600 dark:text-red-400">
             <div className="flex justify-between items-center">
               <p>
-                📉 Bottom <span className="font-bold">{topLosers.length}</span> stocks cause{" "}
+                📉 Bottom{" "}
+                <span className="font-bold">{topLosers.length}</span> stocks cause{" "}
                 <span className="font-semibold">{topLossPercent.toFixed(1)}%</span> of your loss.
               </p>
               <TooltipProvider>
                 <Tooltip>
                   <TooltipTrigger>
-                    <Info className="w-4 h-4 text-gray-400" />
+                    <Info className="w-4 h-4 text-gray-400 dark:text-gray-500" />
                   </TooltipTrigger>
-                  <TooltipContent className="text-xs">
+                  <TooltipContent className="text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-200 border dark:border-gray-700">
                     {topLosers.map((l) => (
                       <div key={l.particulars}>
                         {l.particulars}: ₹{l.gainLoss?.toFixed(2)}
