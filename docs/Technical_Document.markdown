@@ -11,6 +11,9 @@ The Portfolio Dashboard is a full-stack web application designed to visualize an
   - `@tanstack/react-table`: Dynamic, sortable, and searchable table rendering
   - `recharts`, `@nivo/sunburst`: Interactive bar and sunburst charts
   - `axios`: Promise-based API calls
+  - `next-themes`: Client-side dark/light theme toggling
+  - `In-memory module cache`: Temporary caching of Yahoo/Google API data to avoid redundant requests
+
 
 ## 2. Architectural Design
 The application leverages a Next.js full-stack architecture, integrating frontend rendering and backend data processing with a focus on efficiency and scalability.
@@ -21,8 +24,9 @@ The data flow is dynamic, resilient, and optimized for real-time updates:
 2. A client-side `setInterval` loop triggers data refreshes every 15 seconds.
 3. Two API routes (`/api/yahoo` and `/api/google`) are called in parallel using `Promise.all` to fetch real-time market data (CMP, P/E, EPS).
 4. Market data is cached in local JSON files (`assets.json`, `portfolios.json`), simulating a database.
-5. The `getEnrichedPortfolioData` utility runs server-side, combining static portfolio data with live market data to calculate derived metrics (Investment, P&L, etc.).
-6. The `Dashboard` component updates its state, triggering a UI re-render with fresh data.
+5. An `in-memory caching` layer holds recent API responses during runtime to avoid repeated fetches and reduce load.
+6. The `getEnrichedPortfolioData` utility runs server-side, combining static portfolio data with live market data to calculate derived metrics (Investment, P&L, etc.).
+7. The `Dashboard` component updates its state, triggering a UI re-render with fresh data.
 
 ### Data Modeling
 - **JSON Structure**:
@@ -54,6 +58,10 @@ The data flow is dynamic, resilient, and optimized for real-time updates:
 - **Problem**: Raw portfolio data needed enrichment with market data for metrics and visualizations.
 - **Solution**: The `getEnrichedPortfolioData` utility handles server-side data transformation, joining user holdings with live market data, calculating derived metrics, and aggregating by sector for frontend rendering.
 
+### Challenge 4: Redundant API Fetching in Dev/Preview
+-**Problem**: Frequent refreshes and SSR/ISR in Next.js could trigger repeated Yahoo and Google API calls, leading to delays and inefficiency.
+-**Solution**: Implemented an in-memory module-level cache for Yahoo and Google responses within API routes.Ensures that recent results (e.g., within last 15 seconds) are reused, minimizing unnecessary API hits. Especially useful for preview deployments, where frequent rebuilds could hit rate limits or cause slowdowns.
+
 ## 4. UI Design and Implementation
 ### Portfolio Table
 - Built with `@tanstack/react-table` for dynamic rendering.
@@ -62,6 +70,7 @@ The data flow is dynamic, resilient, and optimized for real-time updates:
   - **Dynamic Columns**: Supports future column additions/removals.
   - **Sorting & Searching**: Sortable columns and a search bar for filtering by name.
   - **Visuals**: Color-coded Gain/Loss (green for positive, red for negative), `CircularProgress` for portfolio allocation with external percentage display.
+  - **Themes Implemetation**: Fully integrated **Dark Mode** using `next-themes`, auto-adapts to system settings with manual toggle support. Chart colors, labels, and axes dynamically adjust for optimal contrast in dark theme
 
 ### Visualizations
 - **Portfolio Summary**: Displays KPIs (total return, present vs. invested value).
@@ -98,6 +107,8 @@ The data flow is dynamic, resilient, and optimized for real-time updates:
 - Applied `useMemo` in key components to minimize redundant calculations and re-renders.
 - Server-side `loadData.ts` handles data enrichment for efficiency.
 - Batch API queries reduce server load.
+- Added server-side in-memory cache to throttle repetitive fetches from Yahoo/Google APIs
+- Theming handled with client-controlled custom ThemeContext, reducing unnecessary rerenders
 
 ### Testing
 - **Functional**: Validated calculations against provided Excel sheet.

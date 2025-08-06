@@ -13,8 +13,10 @@ A fully responsive, visually insightful, and extensible portfolio dashboard buil
 - ✅ Circular ring for Portfolio % (with external label)
 - ✅ Gain/Loss with arrow + number + percentage
 - ✅ Searchable, sortable, memoized for performance
+- ✅ Dark Mode with persistent theme memory (localStorage-based)
 - ✅ Responsive & scrollable (both X and Y)
 - ✅ Fully generalized and scalable data model
+
 
 ---
 
@@ -24,6 +26,10 @@ A fully responsive, visually insightful, and extensible portfolio dashboard buil
 - **Charting**: Recharts, @nivo/bar
 - **Table**: @tanstack/react-table
 - **API Fetch**: Axios, native fetch
+- **Theme Handling**: Tailwind dark mode + localStorage
+- **In-memory caching**: For API responses during dev/prod testing
+
+
 
 ---
 
@@ -123,7 +129,7 @@ npm run dev
 - Icons for sorting and expanding
 - Small indicators, no empty-cell dashes
 - Circular Portfolio % charts (outer label only)
-- Sticky left column for particulars (planned)
+- Theme-aware charts and axis colors (dark/light modes)
 
 ---
 
@@ -141,6 +147,8 @@ npm run dev
 - React hooks and `useMemo` for performance
 - Separation of concerns between data, views, and config
 - Visuals and KPIs carefully selected from available data
+- In-memory caching layer added for Yahoo & Google fetches to reduce redundant API calls and optimize performance
+
 
 ---
 
