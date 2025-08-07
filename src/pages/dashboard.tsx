@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState, useMemo } from "react";
-import { getEnrichedPortfolioData } from "@/utils/loadData";
 import { Portfolio } from "@/types/portfolio";
 import PortfolioCard from "@/components/PortfolioCard";
 
