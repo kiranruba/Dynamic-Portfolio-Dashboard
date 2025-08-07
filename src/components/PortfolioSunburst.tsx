@@ -61,7 +61,7 @@ const pastelColors = useMemo(() => {
   return (
     
 <div className="relative bg-gray-100 dark:bg-gray-900 p-3 shadow-md border dark:border-gray-700 border rounded-xl h-[15.5rem] mb-6">
-  <h2 className="absolute top-2 left-4 bg-gray-100 dark:bg-zinc-900 text-gray-800 dark:text-gray-300 font-semibold z-10 px-2">
+  <h2 className="absolute top-2 left-4 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 font-semibold z-10 px-2">
     Portfolio Distribution
   </h2>
 
