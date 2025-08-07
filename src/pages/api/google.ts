@@ -10,6 +10,7 @@ const SHEET_URL =
 let cachedAssets: Asset[] | null = null;
 let lastFetchedAt: number | null = null;
 const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
+const DISABLE_CACHE = true;
 
 // ✅ Define types
 type MarketData = {
@@ -36,9 +37,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const isProd = process.env.NODE_ENV === "production";
 
     // ✅ Reuse cached data in production if still valid
-    if (isProd && cachedAssets && lastFetchedAt && now - lastFetchedAt < CACHE_TTL) {
-      return res.status(200).json({ success: true, assets: cachedAssets });
-    }
+    if (isProd && !DISABLE_CACHE && cachedAssets && lastFetchedAt && now - lastFetchedAt < CACHE_TTL) {
+  return res.status(200).json({ success: true, assets: cachedAssets });
+}
 
     // ✅ Fetch Google Sheet CSV
     const response = await fetch(SHEET_URL);
