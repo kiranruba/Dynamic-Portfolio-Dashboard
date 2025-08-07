@@ -1,6 +1,5 @@
-// import portfoliosRaw from "@/data/portfolios.json";
-// import assetsRaw from "@/data/assets.json";
-// import usersRaw from "@/data/users.json";
+/* eslint-disable @typescript-eslint/no-require-imports */
+
 import { UserData,Asset,Portfolio, Holding } from "@/types/portfolio";
 let portfoliosRaw: Portfolio[] = [];
 let assetsRaw: Asset[] = [];
