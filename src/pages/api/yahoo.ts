@@ -6,7 +6,16 @@ const isProd = process.env.NODE_ENV === 'production';
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   try {
-    let assets: any[];
+    type Asset = {
+  holdingId: string;
+  ticker: string;
+  marketData: {
+    cmp: number | null;
+        };
+      };
+
+    let assets: Asset[];
+
 
     if (!isProd) {
       // ✅ DEV: Load from local file system
