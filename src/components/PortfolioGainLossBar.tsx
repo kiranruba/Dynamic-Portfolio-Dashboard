@@ -45,7 +45,7 @@ export default function PortfolioGainLossBar({
   return (
     <div className="bg-gray-100 dark:bg-gray-900 p-2 shadow-md dark:shadow-none border dark:border-gray-700 rounded-xl h-[15.5rem] mb-6 transition-colors duration-300">
      
-      <h2 className="text-lg font-bold mb-2 bg-gray-100 dark:bg-zinc-900 text-gray-800 dark:text-gray-300 font-semibold z-10 px-2">{title}</h2>
+      <h2 className="text-lg font-bold mb-2 bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-gray-300 font-semibold z-10 px-2">{title}</h2>
       <ResponsiveBar
         data={chartData}
         keys={["percent"]}
