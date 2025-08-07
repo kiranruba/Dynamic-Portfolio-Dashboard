@@ -71,3 +71,14 @@ export interface SectorSummary {
 export interface EnrichedPortfolio extends Portfolio {
   sectors: SectorSummary[];
 }
+export interface Asset {
+  holdingId: string;
+  particulars: string;
+  sector: string;
+  marketData: {
+    cmp: number;
+    pe: number | null;
+    marketCap: number | null;
+    latestEarnings: number | null;
+  };
+}
