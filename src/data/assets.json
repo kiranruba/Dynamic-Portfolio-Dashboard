@@ -5,8 +5,8 @@
     "particulars": "HDFC Bank",
     "sector": "Financial Sector",
     "marketData": {
-      "cmp": 1984.8,
-      "pe": 21.55,
+      "cmp": 1995.4,
+      "pe": 21.74,
       "marketCap": 130079586202380,
       "latestEarnings": 91.92
     }
@@ -17,8 +17,8 @@
     "particulars": "Bajaj Finance",
     "sector": "Financial Sector",
     "marketData": {
-      "cmp": 878.45,
-      "pe": 31.22,
+      "cmp": 879.1,
+      "pe": 31.43,
       "marketCap": 521012507400000,
       "latestEarnings": 28.06
     }
@@ -29,10 +29,10 @@
     "particulars": "ICICI Bank",
     "sector": "Financial Sector",
     "marketData": {
-      "cmp": 1432.1,
-      "pe": 17.68,
+      "cmp": 1440.3,
+      "pe": 19.59,
       "marketCap": 85958356200950,
-      "latestEarnings": 68.72
+      "latestEarnings": 73.55
     }
   },
   {
@@ -41,10 +41,10 @@
     "particulars": "Bajaj Housing",
     "sector": "Financial Sector",
     "marketData": {
-      "cmp": 112,
-      "pe": 85.72,
+      "cmp": 113.03,
+      "pe": 41.27,
       "marketCap": 13801727887060,
-      "latestEarnings": 2.53
+      "latestEarnings": 2.75
     }
   },
   {
@@ -53,10 +53,10 @@
     "particulars": "Savani Financials",
     "sector": "Financial Sector",
     "marketData": {
-      "cmp": 18.9,
-      "pe": null,
+      "cmp": 18.21,
+      "pe": 0,
       "marketCap": null,
-      "latestEarnings": null
+      "latestEarnings": 0
     }
   },
   {
@@ -65,8 +65,8 @@
     "particulars": "Affle India",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 1949.4,
-      "pe": 68.26,
+      "cmp": 1949.9,
+      "pe": 68.14,
       "marketCap": 2048948496120,
       "latestEarnings": 28.54
     }
@@ -77,7 +77,7 @@
     "particulars": "LTI Mindtree",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 5020.5,
+      "cmp": 5037.5,
       "pe": 34.69,
       "marketCap": 17300400000000,
       "latestEarnings": 145.92
@@ -89,10 +89,10 @@
     "particulars": "KPIT Tech",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 1204.4,
-      "pe": 46.57,
+      "cmp": 1209.5,
+      "pe": 41.12,
       "marketCap": 350734151550,
-      "latestEarnings": 27.77
+      "latestEarnings": 29.5
     }
   },
   {
@@ -101,10 +101,10 @@
     "particulars": "Tata Tech",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 661.4,
-      "pe": 41.68,
+      "cmp": 668.2,
+      "pe": 39.79,
       "marketCap": 2687959381950,
-      "latestEarnings": 15.88
+      "latestEarnings": 16.86
     }
   },
   {
@@ -113,10 +113,10 @@
     "particulars": "BLS E-Services",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 186.1,
-      "pe": 26.3,
+      "cmp": 188.7,
+      "pe": 32.71,
       "marketCap": 138865071270,
-      "latestEarnings": 5.8
+      "latestEarnings": 5.79
     }
   },
   {
@@ -125,10 +125,10 @@
     "particulars": "Tanla",
     "sector": "Tech Sector",
     "marketData": {
-      "cmp": 632.8,
-      "pe": 11.64,
+      "cmp": 641.95,
+      "pe": 17.83,
       "marketCap": 604162425960,
-      "latestEarnings": 39.48
+      "latestEarnings": 36
     }
   },
   {
@@ -137,8 +137,8 @@
     "particulars": "Dmart",
     "sector": "Consumer",
     "marketData": {
-      "cmp": 4260,
-      "pe": 102.47,
+      "cmp": 4263.5,
+      "pe": 102.42,
       "marketCap": 22458422662500,
       "latestEarnings": 41.5
     }
@@ -149,10 +149,10 @@
     "particulars": "Tata Consumer",
     "sector": "Consumer",
     "marketData": {
-      "cmp": 1045.9,
-      "pe": 26.56,
+      "cmp": 1052.8,
+      "pe": 78.78,
       "marketCap": 129706608139850,
-      "latestEarnings": 134.77
+      "latestEarnings": 13.36
     }
   },
   {
@@ -161,10 +161,10 @@
     "particulars": "Pidilite",
     "sector": "Consumer",
     "marketData": {
-      "cmp": 3038.1,
-      "pe": 71.13,
+      "cmp": 3050.8,
+      "pe": 74.91,
       "marketCap": 13885778498680,
-      "latestEarnings": 38.36
+      "latestEarnings": 40.73
     }
   },
   {
@@ -173,10 +173,10 @@
     "particulars": "Tata Power",
     "sector": "Power",
     "marketData": {
-      "cmp": 383.9,
-      "pe": 29.36,
+      "cmp": 385.55,
+      "pe": 30.46,
       "marketCap": 11214046120050,
-      "latestEarnings": 11.94
+      "latestEarnings": 12.69
     }
   },
   {
@@ -185,10 +185,10 @@
     "particulars": "KPI Green",
     "sector": "Power",
     "marketData": {
-      "cmp": 517.05,
-      "pe": 29.26,
+      "cmp": 512.75,
+      "pe": 28.35,
       "marketCap": 79150021200,
-      "latestEarnings": 13.75
+      "latestEarnings": 18.16
     }
   },
   {
@@ -197,10 +197,10 @@
     "particulars": "Suzlon",
     "sector": "Power",
     "marketData": {
-      "cmp": 63.47,
-      "pe": 61.25,
+      "cmp": 64.21,
+      "pe": 42.52,
       "marketCap": 7010886611310,
-      "latestEarnings": 0.84
+      "latestEarnings": 1.51
     }
   },
   {
@@ -210,9 +210,9 @@
     "sector": "Power",
     "marketData": {
       "cmp": 43.96,
-      "pe": 39.51,
+      "pe": 1.64,
       "marketCap": 69853826500,
-      "latestEarnings": 5.57
+      "latestEarnings": 26.88
     }
   },
   {
@@ -221,10 +221,10 @@
     "particulars": "Hariom Pipes",
     "sector": "Pipe Sector",
     "marketData": {
-      "cmp": 429.6,
-      "pe": 17.98,
+      "cmp": 444.55,
+      "pe": 22.33,
       "marketCap": 109469370150,
-      "latestEarnings": 19.78
+      "latestEarnings": 19.93
     }
   },
   {
@@ -233,8 +233,8 @@
     "particulars": "Astral",
     "sector": "Pipe Sector",
     "marketData": {
-      "cmp": 1408.2,
-      "pe": 71.86,
+      "cmp": 1415.9,
+      "pe": 72.52,
       "marketCap": 3539799310730,
       "latestEarnings": 19.5
     }
@@ -245,10 +245,10 @@
     "particulars": "Polycab",
     "sector": "Pipe Sector",
     "marketData": {
-      "cmp": 6818,
-      "pe": 40.91,
+      "cmp": 6881,
+      "pe": 46.98,
       "marketCap": 7525307128290,
-      "latestEarnings": 121.97
+      "latestEarnings": 146.78
     }
   },
   {
@@ -257,10 +257,10 @@
     "particulars": "Clean Science",
     "sector": "Others",
     "marketData": {
-      "cmp": 1196.2,
-      "pe": 50.37,
+      "cmp": 1196.5,
+      "pe": 47.32,
       "marketCap": 1315808994420,
-      "latestEarnings": 24.52
+      "latestEarnings": 25.27
     }
   },
   {
@@ -269,10 +269,10 @@
     "particulars": "Deepak Nitrite",
     "sector": "Others",
     "marketData": {
-      "cmp": 1808,
-      "pe": 41.86,
+      "cmp": 1824.1,
+      "pe": 35.7,
       "marketCap": 1613814228000,
-      "latestEarnings": 37.26
+      "latestEarnings": 51.12
     }
   },
   {
@@ -281,10 +281,10 @@
     "particulars": "Fine Organic",
     "sector": "Others",
     "marketData": {
-      "cmp": 5009,
-      "pe": 41.86,
+      "cmp": 5002,
+      "pe": 37.35,
       "marketCap": 1613814228000,
-      "latestEarnings": 37.26
+      "latestEarnings": 133.89
     }
   },
   {
@@ -293,10 +293,10 @@
     "particulars": "Gravita",
     "sector": "Others",
     "marketData": {
-      "cmp": 1800.1,
-      "pe": 41.86,
+      "cmp": 1839.4,
+      "pe": 38.63,
       "marketCap": 1613814228000,
-      "latestEarnings": 37.26
+      "latestEarnings": 47.86
     }
   },
   {
@@ -305,10 +305,10 @@
     "particulars": "SBI Life",
     "sector": "Others",
     "marketData": {
-      "cmp": 1852,
-      "pe": null,
+      "cmp": 1861.1,
+      "pe": 74.97,
       "marketCap": 182499828280,
-      "latestEarnings": -5.82
+      "latestEarnings": 24.81
     }
   },
   {
@@ -317,10 +317,10 @@
     "particulars": "Infy",
     "sector": "Others",
     "marketData": {
-      "cmp": 1430.7,
-      "pe": 25.86,
+      "cmp": 1436.9,
+      "pe": 21.94,
       "marketCap": 71397151596490,
-      "latestEarnings": 66.63
+      "latestEarnings": 65.68
     }
   },
   {
@@ -329,10 +329,10 @@
     "particulars": "Happiest Mind",
     "sector": "Others",
     "marketData": {
-      "cmp": 591.9,
-      "pe": 47.41,
+      "cmp": 594,
+      "pe": 46.91,
       "marketCap": 1051771281640,
-      "latestEarnings": 14.8
+      "latestEarnings": 12.67
     }
   },
   {
@@ -341,10 +341,10 @@
     "particulars": "Easemytrip",
     "sector": "Others",
     "marketData": {
-      "cmp": 9.16,
-      "pe": 41.86,
+      "cmp": 9.23,
+      "pe": 30.87,
       "marketCap": 1613814228000,
-      "latestEarnings": 37.26
+      "latestEarnings": 0.3
     }
   }
 ]
