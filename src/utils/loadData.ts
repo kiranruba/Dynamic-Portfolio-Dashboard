@@ -1,25 +1,7 @@
-/* eslint-disable @typescript-eslint/no-require-imports */
-
-import { UserData,Asset,Portfolio, Holding } from "@/types/portfolio";
-let portfoliosRaw: Portfolio[] = [];
-let assetsRaw: Asset[] = [];
-let usersRaw: UserData[] = [];
-
-if (process.env.NODE_ENV !== "production") {
-  portfoliosRaw = require("@/data/portfolios.json");
-  assetsRaw = require("@/data/assets.json");
-  usersRaw = require("@/data/users.json");
-} else {
-  // ❗ In production, you must replace this with real DB or API fetch
-  // Example:
-  (async () => {
-    portfoliosRaw = await fetch("/api/portfolios").then(res => res.json());
-    assetsRaw = await fetch("/api/assets").then(res => res.json());
-    usersRaw = await fetch("/api/users").then(res => res.json());
-  })();
-}
-
-
+import portfoliosRaw from "@/data/portfolios.json";
+import assetsRaw from "@/data/assets.json";
+import usersRaw from "@/data/users.json";
+import { Portfolio, Holding } from "@/types/portfolio";
 
 // ✅ New interface
 interface SectorSummary {
