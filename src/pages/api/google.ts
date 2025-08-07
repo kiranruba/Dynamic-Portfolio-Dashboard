@@ -9,7 +9,7 @@ const SHEET_URL =
 // ✅ In-memory cache for production
 let cachedAssets: Asset[] | null = null;
 let lastFetchedAt: number | null = null;
-const CACHE_TTL = 5 * 60 * 1000; // 5 minutes in milliseconds
+const CACHE_TTL = 15 * 1000; // 15 seconds in milliseconds
 const DISABLE_CACHE = true;
 
 // ✅ Define types

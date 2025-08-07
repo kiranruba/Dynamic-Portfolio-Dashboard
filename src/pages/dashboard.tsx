@@ -10,18 +10,22 @@ export default function Dashboard() {
 
   const refreshData = async () => {
     try {
+      // Trigger background data update
       await Promise.all([fetch("/api/yahoo"), fetch("/api/google")]);
-      const data = getEnrichedPortfolioData();
+
+      // Then fetch enriched portfolio
+      const res = await fetch("/api/portfolio");
+      const data = await res.json();
       setPortfolios(data);
     } catch (err) {
-      console.error("Error refreshing data:", err);
+      console.error("Error fetching portfolio:", err);
     }
   };
 
-  useEffect(() => {
+   useEffect(() => {
     refreshData();
-    const cmpInterval = setInterval(refreshData, 15000);
-    return () => clearInterval(cmpInterval);
+    const interval = setInterval(refreshData, 15000);
+    return () => clearInterval(interval);
   }, []);
 
   const portfolio = portfolios[0];
