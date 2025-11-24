@@ -1,60 +1,53 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 import yahooFinance from 'yahoo-finance2';
 
-const isProd = process.env.NODE_ENV === 'production';
+type Asset = {
+    holdingId: string;
+    ticker: string;
+    marketData: {
+        cmp: number | null;
+    };
+};
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  try {
-    type Asset = {
-      holdingId: string;
-      ticker: string;
-      marketData: {
-        cmp: number | null;
-      };
-    };
+    try {
+        // ✅ Import static assets from JSON (works in both dev and Netlify)
+        const { default: staticAssets } = await import('@/data/assets.json');
 
-    let assets: Asset[] = [];
+        // ✅ Clone to avoid mutating the imported module
+        const assets: Asset[] = JSON.parse(JSON.stringify(staticAssets));
 
-    let fs, path, assetsPath;
+        // ✅ Fetch all prices in parallel for better performance
+        const fetchPromises = assets.map(async (asset) => {
+            if (!asset.ticker) {
+                console.warn(`⚠️ No ticker for ${asset.holdingId}, skipping`);
+                return;
+            }
 
-    if (!isProd) {
-      fs = await import('fs');
-      path = await import('path');
-      assetsPath = path.join(process.cwd(), 'src/data/assets.json');
-      const raw = fs.readFileSync(assetsPath, 'utf-8');
-      assets = JSON.parse(raw);
-    } else {
-      const { default: staticAssets } = await import('@/data/assets.json');
-      assets = staticAssets;
+            try {
+                const quote = await yahooFinance.quote(asset.ticker);
+                const quoteData = Array.isArray(quote) ? quote[0] : quote;
+                asset.marketData.cmp =
+                    quoteData && typeof quoteData.regularMarketPrice === 'number'
+                        ? quoteData.regularMarketPrice
+                        : null;
+            } catch (err) {
+                console.error(`❌ Error fetching data for ${asset.ticker}`, err);
+                asset.marketData.cmp = null;
+            }
+        });
+
+        // ✅ Wait for all fetches to complete
+        await Promise.all(fetchPromises);
+
+        // ✅ Return fresh data (no file writing needed!)
+        res.status(200).json({ success: true, assets });
+    } catch (error) {
+        console.error('❌ Yahoo API error:', error);
+        res.status(500).json({
+            success: false,
+            error: 'Failed to fetch Yahoo Finance data',
+            details: error instanceof Error ? error.message : String(error)
+        });
     }
-
-    for (const asset of assets) {
-      if (!asset.ticker) {
-        console.warn(`⚠️ No ticker for ${asset.holdingId}, skipping`);
-        continue;
-      }
-
-      try {
-        const quote = await yahooFinance.quote(asset.ticker);
-        const quoteData = Array.isArray(quote) ? quote[0] : quote;
-        asset.marketData.cmp =
-          quoteData && typeof quoteData.regularMarketPrice === 'number'
-            ? quoteData.regularMarketPrice
-            : null;
-      } catch (err) {
-        console.error(`❌ Error fetching data for ${asset.ticker}`, err);
-        asset.marketData.cmp = null;
-      }
-    }
-
-    // ✅ Write only in DEV
-    if (!isProd && fs && assetsPath) {
-      fs.writeFileSync(assetsPath, JSON.stringify(assets, null, 2));
-    }
-
-    res.status(200).json({ success: true, assets });
-  } catch (error) {
-    console.error('❌ Yahoo API error:', error);
-    res.status(500).json({ success: false, error: 'Failed to fetch Yahoo Finance data' });
-  }
 }
